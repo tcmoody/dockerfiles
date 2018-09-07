@@ -5,8 +5,9 @@ RUN apt-get update
 RUN apt-get --yes install curl
 RUN apt-get --yes install gnupg2
 RUN apt-get --yes install apt-transport-https
+RUN apt-get --yes install procps
 
-# install gocd server:
+# install gocd server
 RUN echo "deb https://download.gocd.org /" | tee /etc/apt/sources.list.d/gocd.list
 RUN curl https://download.gocd.org/GOCD-GPG-KEY.asc | apt-key add -
 RUN apt-get update
