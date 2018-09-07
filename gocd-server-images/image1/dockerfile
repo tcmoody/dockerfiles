@@ -1,0 +1,13 @@
+FROM debian:latest
+
+# get tooling
+RUN apt-get update
+RUN apt-get --yes install curl
+RUN apt-get --yes install gnupg2
+RUN apt-get --yes install apt-transport-https
+
+# install gocd server:
+RUN echo "deb https://download.gocd.org /" | tee /etc/apt/sources.list.d/gocd.list
+RUN curl https://download.gocd.org/GOCD-GPG-KEY.asc | apt-key add -
+RUN apt-get update
+RUN apt-get --yes install go-server
