@@ -12,4 +12,5 @@ RUN echo "deb https://download.gocd.org /" | tee /etc/apt/sources.list.d/gocd.li
 RUN curl https://download.gocd.org/GOCD-GPG-KEY.asc | apt-key add -
 RUN apt-get update
 RUN apt-get --yes install go-server
-ENTRYPOINT [ "sh", "-c", "/etc/init.d/go-server start" ]
+
+ENTRYPOINT [ "sh", "-c", "/etc/init.d/go-server start && tail -f /var/log/go-server/go-server.log" ]
